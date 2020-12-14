@@ -1,0 +1,35 @@
+<h1 mat-dialog-title> {{ data.electiveCourse.name }} </h1>
+<div mat-dialog-content>
+<!--  Here goes the mat-expansion-panel -->
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let course of data.electiveCourse.childrenElectiveCourses">
+      <mat-expansion-panel-header >
+        <mat-panel-title>
+          <h3>{{ course.courseId }} - {{ course.name }}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item><h3>Cr&eacute;ditos: {{ course.credits }}</h3></mat-list-item>
+        <mat-list-item><h3>&Aacute;rea: {{ course.area.areaName }}</h3></mat-list-item>
+        <mat-list-item>
+          <h3>Requsitos: </h3>
+          <h3 *ngIf="course.requisites.length > 0; else noRequisites"><span *ngFor="let requisite of course.requisites">&nbsp;{{ requisite.courseId }}&nbsp;</span></h3>
+          <ng-template #noRequisites>
+            <h3 style="padding-left: 0.5em">Sin Requisitos</h3>
+          </ng-template>
+        </mat-list-item>
+        <mat-list-item>
+          <h3>Correquisitos: </h3>
+          <h3 *ngIf="course.corequisites.length > 0; else noCorrequisites"><span *ngFor="let corequisite of course.corequisites">&nbsp;{{ corequisite.courseId }}&nbsp;</span></h3>
+          <ng-template #noCorrequisites>
+            <h3 style="padding-left: 0.5em">Sin Correqusitos</h3>
+          </ng-template>
+        </mat-list-item>
+        <!--<mat-list-item><a mat-stroked-button href="#">Ver m&aacute;s informaci&oacute;n</a></mat-list-item>-->
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Volver</button>
+</div>

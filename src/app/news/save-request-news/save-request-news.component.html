@@ -1,0 +1,69 @@
+<div class="containerGeneral">
+  <div class="container">
+    <mat-form-field>
+      <input matInput [(ngModel)]="news.title" required type="text" placeholder="Ingrese el título de la noticia">
+    </mat-form-field>
+
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field>
+            <mat-label>Categoría</mat-label>
+            <select matNativeControl [(ngModel)]="newsCategory.newsCategoryId">
+              <option   [value]="itemCategory.newsCategoryId" *ngFor="let itemCategory of newCategory">
+                {{itemCategory.name}}</option>
+            </select>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field>
+            <mat-label>Sede o Recinto</mat-label>
+            <select matNativeControl [(ngModel)]="universityBranch.branchId">
+              <option [value]="item.branchId" *ngFor="let item of branch">{{item.name}}</option>
+            </select>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <div class="custom-dropzone" ngx-dropzone [multiple]="false" ngx-dropzone [accept]="'image/*'"
+      (change)="onSelect($event)">
+      <ngx-dropzone-label>
+        <div>
+          <h2>Inserte una imagen</h2>
+        </div>
+      </ngx-dropzone-label>
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+        [removable]="true" (removed)="onRemove(f)">
+        <ngx-dropzone-label [(ngModel)]="news.content">{{ f.name }}</ngx-dropzone-label>
+      </ngx-dropzone-image-preview>
+    </div>
+    <mat-form-field>
+      <mat-label>Ingrese el contenido de la noticia</mat-label>
+      <textarea [(ngModel)]="news.content" required class="textNoticia" matInput placeholder="Desarrolle su noticia"></textarea>
+    </mat-form-field>
+  </div>
+
+  <div class="container">
+    <mat-form-field>
+      <input [(ngModel)]="news.authorName" matInput type="text" required placeholder="Nombre del publicador">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [(ngModel)]="news.authorLastName" type="text" required placeholder="Apellidos del publicador">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Correo</mat-label>
+      <input matInput [(ngModel)]="news.authorMail" type="email" required placeholder="Ej. pedro@ejemplo.com">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rol que cumple</mat-label>
+      <select matNativeControl [(ngModel)]="news.authorInstitutionRole">
+        <option [value]="rol.value" *ngFor="let rol of roles">{{rol.value}}</option>
+      </select>
+    </mat-form-field>
+    <button mat-raised-button color="Warn" (click)="saveNews()">Solicitar publicar la noticia</button>
+  </div>
+</div>

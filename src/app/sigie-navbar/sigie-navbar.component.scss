@@ -1,0 +1,45 @@
+.sigie-navbar {
+  background-color: transparentize($color: gainsboro, $amount: 0.4);
+  max-height: 2.8125rem;
+  min-height: 1.563rem;
+  position: fixed;
+  z-index: 5;
+  margin-top: 54px;
+}
+
+.link{
+  color: #323232;
+  text-decoration: solid;
+  z-index: 3;
+  max-width: max-content;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.action{
+  max-width: min-content;
+  position: relative;
+}
+
+.action:hover{
+  background-color: #323232;
+  display: flex;
+
+}
+
+.link:hover{
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+
+.menu-item{
+  padding: 0 25px;
+}
+
+
+.fill-remaining-space:hover {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}

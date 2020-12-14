@@ -1,0 +1,24 @@
+<mat-card class="article" >
+  <!--IMAGE-->
+  <img mat-card-image class="images" src={{news.image}} alt="News Article Image">
+  <!--HEADER-->
+  <mat-card-header class="tittle">
+
+    <mat-card-title >{{news.title}}</mat-card-title>
+    <mat-card-subtitle>{{news.universityBranch.name}}</mat-card-subtitle>
+    <mat-card-subtitle><button #category (click)="search(category.value)" value={{news.newsCategory.newsCategoryId}} >{{news.newsCategory.newsCategoryName}}</button></mat-card-subtitle>
+    <mat-card-subtitle>{{news.publicationDate}} </mat-card-subtitle>
+    <mat-card-actions>
+      <p>{{news.authorName}} {{news.authorLastName}}</p>
+    </mat-card-actions>
+  </mat-card-header>
+
+  <!--CONTENT-->
+  <mat-card-content class="description">
+    <h4>{{news.content}}</h4>
+  </mat-card-content>
+
+  <button class="button" (click)="onBack()">Volver</button>
+</mat-card>
+
+

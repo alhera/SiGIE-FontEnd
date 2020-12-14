@@ -1,0 +1,88 @@
+<div class="class">
+
+  <div class="container mat-elevation-z8">
+    <div class="form">
+      <mat-form-field *ngFor="let filter of filterSelectObj" style="margin-left: 15px;">
+        <mat-label>Filtrar {{filter.name}}</mat-label>
+        <select matNativeControl name="{{filter.columnProp}}" 
+        (change)="filterChange(filter,$event)">
+          <option value="">-- Seleccione {{filter.name}} --</option>
+          <option [value]="item" *ngFor="let item of filter.options">{{item}}</option>
+        </select>
+      </mat-form-field>
+      &nbsp;
+      <button mat-flat-button color="link" (click)="resetFilters()">Resetear</button>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell">
+      ng update @angular/cli @angular/core
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- ID Column -->
+      <ng-container matColumnDef="eventName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre del evento</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.eventName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="responsibleName">
+        <mat-header-cell  *matHeaderCellDef mat-sort-header>Encargad(@)</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.responsibleName + " " + row.responsibleLastName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="eventDate" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.eventDate}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="details" >
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Detalles</mat-header-cell>
+        <mat-cell *matCellDef="let row"><button button mat-flat-button color="link" (click)="onSelect(row)">Ver Detalles</button>
+      </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.eventType.eventTypeName}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell style="display: none;" *matHeaderCellDef mat-sort-header>Recinto</mat-header-cell>
+        <mat-cell style="display: none;" *matCellDef="let row"> {{row.branch.name}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <mat-header-cell style="display: none;" *matHeaderCellDef mat-sort-header>Estado</mat-header-cell>
+        <mat-cell style="display: none;" *matCellDef="let row"> {{row.status}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="eventTypeName">
+        <mat-header-cell style="display: none;" *matHeaderCellDef mat-sort-header>Tipo</mat-header-cell>
+        <mat-cell style="display: none;" *matCellDef="let row"> {{row.eventType.eventTypeName}}</mat-cell>
+      </ng-container>      
+
+      <!-- actions -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Opciones</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button color="accent" (click)="aprove(row)">
+            <mat-icon aria-label="Edit">Aprobar</mat-icon>
+          </button>
+
+          <button mat-icon-button color="accent" (click)="reject(row)">
+            <mat-icon aria-label="Delete">Rechazar</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+
+    <mat-paginator #paginator [length]="dataSource.filteredData.length" [pageIndex]="0" [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+  </div>
+</div>

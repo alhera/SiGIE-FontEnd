@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div class="space">
+
+  <h1>Listas de projectos de acción social</h1>
+
+  <h4>Estado de los proyectos que desea mostrar:</h4>
+  <mat-form-field>
+    
+    <mat-select [(ngModel)]="state" (ngModelChange)="captureState()" >
+      <mat-option *ngFor="let state of states" [value]="state.value">
+        {{state.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Codigo </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Título </th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell  *matHeaderCellDef > Detalle </th>
+      <mat-cell *matCellDef="let row" >
+        
+           <button mat-button (click)="sendProject(row.code)"> Ver detalles</button>
+      </mat-cell>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons style="margin-right: 34%; "></mat-paginator>
+
+</div>
+</body>
+
+</html>

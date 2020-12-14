@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <div class="mainDiv">
+
+        <h1>Solicitud de publicación de proyectos de acción social</h1>
+
+        <form class="form" (ngSubmit)="Submit()">
+
+            <h4>Seleccione el tipo de proyecto</h4>
+            <mat-form-field>
+                <mat-label>Sede o Recinto</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let food of foods" [value]="food.value">
+                        {{food.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="mat-form-field">
+                <mat-label>Nombre del proyecto</mat-label>
+                <input matInput placeholder="" [(ngModel)]="title" name="title">
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field">
+                <mat-label>Descripcion</mat-label>
+                <textarea matInput [(ngModel)]="description" name="description"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="mat-form-field">
+                <mat-label>Encargado del proyecto</mat-label>
+                <input matInput placeholder="">
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de inicio</mat-label>
+                <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" name="startDate">
+                <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                <mat-datepicker #picker ></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de finalizacion</mat-label>
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" name="endDate">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            <div id="content">
+                <div id="left">
+                    <mat-label class="fontStyle">Collaboradores internos</mat-label>
+                    <button type="button" mat-raised-button (click)="internalCollaboratorsTable()">Seleccionar</button>
+                </div>
+
+                <div id="right">
+                    <mat-label class="fontStyle">Collaboradores Externos</mat-label>
+                    <button type="button" mat-raised-button (click)="externalCollaboratorsTable()">Seleccionar</button>
+                </div>
+
+            </div>
+
+            <!--<mat-checkbox>Marque si su proyecto está actualmente activo</mat-checkbox>-->
+            
+            <br>
+                <button mat-raised-button type="submit" color="primary">Enviar</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

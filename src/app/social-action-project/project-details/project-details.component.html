@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body background="./assets/img/girasol.png">
+
+    <div class="mainDiv">
+
+        <h1 class="title">Detalles del proyecto de acción social</h1>
+
+        <div class="leftDiv">
+                
+            <div class="rowDiv"><p>Nombre: </p></div>
+            <div class="rowDivDescription"><p>Descripcion: </p></div>
+            <div class="rowDiv"><p>Recinto: </p></div>
+            <div class="rowDiv"><p>Encargado: </p></div>
+            <div class="rowDiv"><p>Fecha de inicio: </p></div>
+            <div class="rowDiv"><p>Fecha de finalización: </p></div>
+            <div class="rowDiv"><p>Activo: </p></div>
+            <div class="rowDiv"><p>Visible: </p></div>
+            <div class="rowDiv"><p>Estado de la publicación: </p></div>
+            <div class="rowDiv"><p>Colaboradores internos: </p></div>
+            <div class="rowDiv"><p>Colaboradores externos: </p></div>
+
+        </div>
+
+        <div class="rightDiv">
+
+            <div class="rowDiv"><p>{{title}}</p></div>
+            <div class="rowDivDescription"><p>{{description}}</p></div>
+            <div class="rowDiv"><p>{{branch.name}}</p></div>
+            <div class="rowDiv"><p>{{internalCollaborators[0].professor.name}} {{internalCollaborators[0].professor.lastName}}</p></div>
+            <div class="rowDiv"><p>{{startDate.getDate()}}/{{startDate.getMonth()}}/{{startDate.getFullYear()}}</p></div>
+            <div class="rowDiv"><p>{{endDate.getDate()}}/{{endDate.getMonth()}}/{{endDate.getFullYear()}}</p></div>
+            <div class="rowDiv"><p>{{active==false?"No":"Si"}}</p></div>
+            <div class="rowDiv"><p>{{visible==false?"No":"Si"}}</p></div>
+            <div class="rowDiv"><p>{{publicationStatus}}</p></div>
+            <div class="rowDivDescription"> <button mat-raised-button (click)="internalCollaboratorsTable()">Ver</button> </div>
+            <div class="rowDivDescription"> <button mat-raised-button  (click)="externalCollaboratorsTable()">Ver</button> </div>
+
+        </div>
+
+        <div class="secondDiv">
+
+            <button mat-raised-button  (click)="submit()" color="primary">Aprobar</button>
+                
+            <button mat-raised-button  (click)="openDialog()">Solitar cambios</button>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>

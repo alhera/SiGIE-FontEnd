@@ -1,0 +1,33 @@
+<form novalidate [formGroup]="form">
+
+  <mat-grid-list cols="5" rowHeight="3:3">
+
+    <mat-grid-tile>
+      <input type="text" formControlName="title" placeholder="Título de la noticia">
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <input type="date" formControlName="datefrom" >
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <input type="date" formControlName="dateto" >
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-select class="combo-box" placeholder="Recinto" formControlName="branch" >
+
+        <mat-option value={{branch.branchId}} *ngFor="let branch of universityBranches" >
+          {{branch.name}}
+        </mat-option>
+
+      </mat-select>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <button (click)="search(form.value)" class="button">Buscar</button>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+</form>

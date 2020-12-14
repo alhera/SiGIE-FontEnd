@@ -1,0 +1,51 @@
+
+<script>
+  
+  function test(){
+
+    console.log("Aqui deberia cambiar el texto del boton");
+
+  }
+
+</script>
+
+<mat-form-field>
+    <mat-label>Colaborador</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ej: Carlos Ruíz">
+  </mat-form-field>
+  
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="professorId">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.professorId}} </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Apellido </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="institutionalMail">
+      <th mat-header-cell *matHeaderCellDef> Correo Institucional </th>
+      <td mat-cell *matCellDef="let element"> {{element.institutionalMail}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="addCollaborator">
+      <th mat-header-cell *matHeaderCellDef> Seleccionar </th>
+      <td mat-cell *matCellDef="let row"> <button type="button" id="{{row.professorId}}" mat-raised-button (click)="addRemoveCollaborator(row.professorId)">{{idsProfessors.indexOf(row.professorId) === -1?'Seleccionar':'Eliminar'}}</button> </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <button mat-raised-button color="primary" (click)="addCollaborators()">Guardar</button>

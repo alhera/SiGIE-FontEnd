@@ -1,0 +1,37 @@
+<!--<<<<<<< HEAD-->
+<!--<mat-toolbar role="toolbar" class="sigie-navbar">-->
+
+<!--  <mat-toolbar-row class="action">-->
+<!--    <a class="link" routerLink="/news/show">Noticias</a>-->
+
+<!--    <span class="fill-remaining-space"></span>-->
+
+<!--    <a class=link routerLink="/study-plan/show"><span>Planes de Estudio</span></a>-->
+<!--  </mat-toolbar-row>-->
+<!--</mat-toolbar>-->
+<!--=======-->
+<mat-toolbar role="toolbar" class="sigie-navbar">
+  <mat-toolbar-row>
+      <a class="link action" routerLink="/news/show">Noticias</a>
+
+      <a [matMenuTriggerFor]="rootMenu" class="menu-item action">Solicitud Noticias</a>
+      <mat-menu #rootMenu="matMenu">
+        <button mat-menu-item [matMenuTriggerFor]="subMenu">Noticias pendientes</button>
+      </mat-menu>
+      <mat-menu #subMenu="matMenu">
+        <button mat-menu-item routerLink="/news/show-news-pending-approve">Ver noticias pendientes</button>
+        <button mat-menu-item routerLink="/news/save-request-news">Solicitar nueva noticia</button>
+      </mat-menu>
+
+      <a class="link action" routerLink="/study-plan/show"><span>Planes de Estudio</span></a>
+
+      <a class="link action" routerLink="/social-action-project/seeProjects">Projectos de acción social</a>
+
+      <a class="link action" routerLink="/social-action-project/sendRequest">Solicitar publicación de PAS</a>
+
+      <a class="link action" routerLink="/events/show">Eventos</a>
+
+  </mat-toolbar-row>
+
+</mat-toolbar>
+<!--&gt;>>>>>> estructura-angular-->

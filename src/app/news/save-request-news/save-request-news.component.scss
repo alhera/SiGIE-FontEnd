@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    overflow: auto;
+    margin:1rem auto;
+} 
+
+.containerGeneral {
+    display: flex;
+    flex-direction: row;
+    padding: 100px 10px;
+    overflow: auto;
+    line-height: 30px;
+} 
+
+.textNoticia {
+    height: 150px;
+    resize: none;
+    background: rgba(10, 10, 10, 0.096);
+}
+
+.custom-dropzone {
+	background: rgba(10, 10, 10, 0.096);
+	color: rgb(0, 0, 0);
+	border-radius: 5px;
+	font-size: 20px;
+}

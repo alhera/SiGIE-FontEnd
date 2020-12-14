@@ -1,0 +1,36 @@
+<div class="main">
+<!--    <app-description></app-description>-->
+  <div class="main-study-plan">
+    <div *ngIf="selectedStudyPlan == ''">
+      <h1>Planes de estudio</h1>
+      <h2>Seleccione el plan de estudios que desea consultar</h2>
+      <div *ngIf="studyPlans.length > 0" class="list-container">
+        <mat-card>
+          <mat-action-list>
+            <button
+              mat-list-item
+              *ngFor="let studyPlan of studyPlans"
+              (click)="onSelectedStudyPlan(studyPlan.studyPlanCode, $event)"> {{ studyPlan.careerName }}
+            </button>
+          </mat-action-list>
+        </mat-card>
+      </div>
+    </div>
+    <app-structure *ngIf="selectedStudyPlan != ''" [studyPlanCode]="selectedStudyPlan" ></app-structure>
+  </div>
+  <div class="util-info-banner">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Paginas relacionadas</mat-card-title>
+      </mat-card-header>
+<!--      <img mat-card-image src="assets/img/firma_vertical_ucr.svg.png" alt="logo ucr">-->
+      <mat-card-content>
+        <mat-list>
+          <mat-list-item><a href="https://www.ucr.ac.cr/">Universidad de Costa Rica</a></mat-list-item>
+          <mat-list-item><a href="https://becas.ucr.ac.cr/">Oficina de Becas y Atención Socioeconómica</a></mat-list-item>
+          <mat-list-item><a href="https://www.ucr.ac.cr/estudiantes/admision/">Proceso de admisión de la UCR</a></mat-list-item>
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

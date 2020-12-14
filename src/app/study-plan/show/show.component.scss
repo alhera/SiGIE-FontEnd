@@ -1,0 +1,86 @@
+.main {
+  padding-top: 10%;
+  font-size: 16px;
+  display: flex;
+  //border-color: #323232;
+  //border-width: 10px;
+  //border-style: solid;
+}
+
+.list-container {
+  padding: 3em;
+}
+
+img {
+  max-width: 300px;
+  margin-left: 1em;
+}
+
+.util-info-banner {
+  max-width: 50em;
+  margin-top: 1em;
+  margin-left: 1.2em;
+}
+
+a {
+  font-size: 0.9em;
+}
+
+::ng-deep .main-study-plan {
+  font-size: 1em;
+  margin-left: 1%;
+  min-width: 63em;
+  max-width: 63em;
+  //border-color: gainsboro;
+  //border-width: 10px;
+  //border-style: solid;
+}
+
+::ng-deep .main-study-plan h1 {
+  font-family: 'Myriad Pro', Arial;
+  font-size: 2em;
+  color: #41ADE7;
+  line-height: 35px;
+  text-align: center;
+  letter-spacing: normal;
+  margin-bottom: 1.5em;
+}
+
+::ng-deep .main-study-plan h3 {
+  font-family: 'Myriad Pro', Arial;
+  font-size: 1em;
+  color: #666666;
+}
+
+::ng-deep .main-study-plan h2 {
+  font-family: 'Myriad Pro', Arial;
+  font-weight: normal;
+  color: #666666;
+  text-transform: none;
+  text-align: left;
+  letter-spacing: normal;
+  font-size: 1.5em;
+  border-bottom: 2px solid #0bbbef;
+  padding-bottom: 0.5em;
+}
+
+::ng-deep .main-study-plan p {
+  font-family: 'Myriad Pro', Arial;
+  font-size: 1em;
+  display: block;
+  color: #666666;
+}
+
+.mat-expansion-panel-header[aria-disabled=true] {
+  background: white;
+  color: black;
+}
+
+@media screen and (max-width: 500px) {
+  .main {
+    font-size: 12px;
+  }
+}
+
+
+

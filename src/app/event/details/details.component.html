@@ -1,0 +1,92 @@
+<div class="class">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{selectedEvent.eventName}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Fecha</h2>
+      <mat-label>{{selectedEvent.eventDate}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Audiencia</h2>
+      <mat-label>{{selectedEvent.audience}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Requerimientos</h2>
+      <mat-label>{{selectedEvent.participantRequirements}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Encargad(@)</h2>
+      <mat-label>{{selectedEvent.responsibleName + " " + selectedEvent.responsibleLastName}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Contacto</h2>
+      <mat-label>{{selectedEvent.responsibleEmail}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" *ngIf="selectedEvent.bookingRequired">
+      <h2>Subscripción</h2>
+      <mat-label>{{selectedEvent.onlineBookingURL}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h2>Más información</h2>
+      <mat-label>{{selectedEvent.additionalInformationURL}}</mat-label>
+    </div>
+  </div>
+  <div *ngIf="selectedEvent.haveProgramme">
+    <h2>Cronograma</h2>
+    <mat-table #table [dataSource]="dataSource" matSort class="mat-cell" style="width: 600px;">
+      <ng-container matColumnDef="eventDayDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Día de evento</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{row.eventDayDate}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="activity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Actividades</mat-header-cell>
+        <mat-cell *matCellDef="let row" style="display: list-item;">
+          <div *ngFor="let activity of row.eventActivities">
+            {{activity.activityName}} &nbsp;
+          </div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="venue">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Lugar</mat-header-cell>
+        <mat-cell *matCellDef="let row" style="display: list-item;">
+          <div *ngFor="let activity of row.eventActivities">
+            {{activity.venue}} &nbsp;
+          </div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="activityStartTime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Hora de inicio</mat-header-cell>
+        <mat-cell *matCellDef="let row" style="display: list-item;">
+          <div *ngFor="let activity of row.eventActivities">
+            {{activity.activityStartTime}} &nbsp;
+          </div>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="activityEndingTime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Hora de finalización</mat-header-cell>
+        <mat-cell *matCellDef="let row" style="display: list-item;">
+          <div *ngFor="let activity of row.eventActivities">
+            {{activity.activityEndingTime}} &nbsp;
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+</div>

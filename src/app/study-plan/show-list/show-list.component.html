@@ -1,0 +1,9 @@
+<h1>Planes de estudio</h1>
+<h2>Seleccione el plan de estudios que desea consultar</h2>
+<div class="list-conteiner">
+  <mat-card>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let studyPlan of studyPlans"> {{ studyPlan.careerName }} </button>
+    </mat-action-list>
+  </mat-card>
+</div>

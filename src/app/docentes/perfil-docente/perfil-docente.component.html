@@ -1,0 +1,13 @@
+<mat-card *ngFor="let docente of docentesCollection">
+    <h1>
+        {{docente.name + ' ' + docente.lastName}}
+    </h1>
+    <strong>
+        Cursos
+    </strong>
+    <div *ngFor="let curso of getCursos(docente.name)">
+        <li>
+            {{curso}}
+        </li>
+    </div>
+</mat-card>

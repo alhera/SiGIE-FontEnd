@@ -1,0 +1,44 @@
+
+//.main-structure{
+//  padding-top: 3%;
+//  font-size: 1em;
+//}
+
+h2#description-title {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+//.structure-title {
+//  font-family: 'Myriad Pro', Arial;
+//  font-weight: normal;
+//  text-transform: none;
+//  text-align: left;
+//  letter-spacing: normal;
+//  font-size: 1.6em;
+//  border-bottom: 2px solid #0bbbef;
+//  padding-bottom: 0.5em;
+//}
+
+mat-expansion-panel {
+  align-content: center;
+}
+
+.main-structure .structure-body {
+  margin: 3em 4em 5em;
+}
+
+.semester-title {
+  background-color:  #ECECEC;
+  padding: 1em;
+  margin-bottom: auto;
+  text-align: center;
+}
+
+.semester {
+  margin-bottom: 1em;
+}
+
+a {
+  background-color: #0C344E;
+}

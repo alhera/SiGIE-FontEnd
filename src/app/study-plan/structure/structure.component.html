@@ -1,0 +1,43 @@
+<div *ngIf="studyPlan !== undefined" class="main-structure">
+  <h1>Plan de estudio: {{ studyPlan.careerName }}</h1>
+  <h2 id="description-title">Descripción</h2>
+  <p class=""> {{ studyPlan.studyPlanDescription }} </p>
+
+  <h2 class="title, structure-title">Estructura de la Carrera</h2>
+  <div class="structure-body">
+    <div class="semester" *ngFor="let level of levels">
+      <h3 class="semester-title"> Semestre {{ level.levelNumber }} - {{ level.emphassis.emphasisName }} </h3>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let course of level.courses">
+          <mat-expansion-panel-header >
+            <mat-panel-title>
+              <h3>{{ course.courseId }} - {{ course.name }}</h3>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-list *ngIf="!course.elective; else isElective">
+            <mat-list-item><h3>Cr&eacute;ditos: {{ course.credits }}</h3></mat-list-item>
+            <mat-list-item><h3>&Aacute;rea: {{ course.area.areaName }}</h3></mat-list-item>
+            <mat-list-item>
+              <h3>Requsitos: </h3>
+              <h3 *ngIf="course.requisites.length > 0; else noRequisites"><span *ngFor="let requisite of course.requisites">&nbsp;{{ requisite.courseId }}&nbsp;</span></h3>
+              <ng-template #noRequisites>
+                <h3 style="padding-left: 0.5em">Sin Requisitos</h3>
+              </ng-template>
+            </mat-list-item>
+            <mat-list-item>
+              <h3>Correquisitos: </h3>
+              <h3 *ngIf="course.corequisites.length > 0; else noCorrequisites"><span *ngFor="let corequisite of course.corequisites">&nbsp;{{ corequisite.courseId }}&nbsp;</span></h3>
+              <ng-template #noCorrequisites>
+                <h3 style="padding-left: 0.5em">Sin Correqusitos</h3>
+              </ng-template>
+            </mat-list-item>
+<!--            <mat-list-item><a mat-stroked-button href="#">Ver m&aacute;s informaci&oacute;n</a> </mat-list-item>-->
+          </mat-list>
+          <ng-template #isElective>
+            <button mat-stroked-button (click)="openElectiveDialog($event, course)">Ver cursos optativos</button>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
